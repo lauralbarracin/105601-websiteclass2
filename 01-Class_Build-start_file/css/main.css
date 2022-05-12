@@ -1,0 +1,280 @@
+/*
+Style Name: CSS GRID Review 
+Description: Class File
+Author: Your Name 
+Version: 1.0
+Tags: GRID, Build, Be Awesome
+*/
+
+/*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+/* -------------
+  Fonts
+-------------- */
+
+
+/* ------------ */
+
+/* -------------
+  Plugins
+-------------*/
+
+/* -------------
+  Reset
+-------------*/
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #626262;
+	font-family: 'Sanchez', serif;
+	font-size: 16px;
+}
+
+h1, h2, h3, h4, p {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, textarea {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* ___________________________________________
+
+       CSS Guide
+___________________________________________ */
+
+/* 01. General Styles                        
+   02. CSS Grid                          
+/* _____________________________________
+
+   01. General Styles
+   _____________________________________ */
+
+   .hidden {
+       display: none;
+   }
+
+   .box-model {
+	   margin: 1rem;
+	   padding: 1rem;
+	   background: #000;
+   }
+
+   /* _____________________________________
+
+   02. CSS Grid
+   _____________________________________ */
+
+   @supports (grid-area: auto) {
+
+		.site {
+			max-width: none;
+		}
+
+		/*------------ Grid Items ------------*/
+
+		.head, .main > *, .foot {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
+		}
+
+		.one-item {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: 1fr;
+		}
+
+		.two-items {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: repeat(2, 1fr);
+			justify-content: space-evenly;
+			row-gap: 2em;
+			column-gap: 2em;
+		}
+
+		.three-items {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: repeat(3, 1fr);
+			justify-content: space-evenly;
+			row-gap: 2em;
+			column-gap: 2em;
+		}
+
+ 		/*------------End Grid Items ------------*/
+
+ 		/*------------ Start Site Header ------------*/
+
+		header {
+			position: sticky;
+			background-color: #fff;
+			top: 0px; 
+			border-bottom: 1px solid #e6e6e6;
+			box-shadow: 0px 5px 8px #888;
+		}
+
+		.logo {
+			grid-column: 1 / span 1;
+		}
+
+		.logo img {
+			padding: 1.5em 1em 1em; 
+			width: 100%;
+		}
+
+		/*------------ End Site Header ------------*/
+
+		/*------------ Start Nav Styling ------------*/
+
+		.nav {
+			grid-column: 2 / span 3;
+			padding-top: 1.5em;
+			margin: 0;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0em 0em .95em;
+			text-decoration: none;
+			text-align: end;
+		}
+
+		nav ul li {
+			display: inline;
+			margin-right: 4em;
+		}
+
+		nav ul li:last-child {
+			margin-right: 0em;
+		}
+
+		nav ul li a {
+			color: #626262;
+			font-size: inherit;
+		}
+
+		/* poner colores al menu principal, libea debajo */ 
+
+		nav ul li a:hover {
+			padding-bottom: .5em;
+			border-bottom: 3px solid #9a2018;
+		}
+
+		nav ul li a.active {
+			padding-bottom: .5em;
+			border-bottom: 3px solid #9a2018;
+		}
+
+		nav ul li a h4 {
+			display: inline;
+			padding: 1.5em 1.5em 1.5em 1.5em; 
+			background-color: #9a2018;
+			color: #fff; 
+			font-size: 1em;
+			transition: background-color 500ms linear;
+		}
+		
+		nav ul li a:hover h4 {
+			background-color: #626262;
+			transition: background-color 500ms linear;
+		}
+
+		.contact-override {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 30em) 1fr);
+			grid-column: 1 / span 4;
+			background: #f4f4f4;
+			border-bottom: 1px solid #ccc;
+		}
+
+		/*------------End Nav Style------------*/
+
+		/*------------Start Hero------------*/
+
+		.hero {
+			margin: 0;
+		}
+
+		.hero-img img{
+			width: 100%
+		}
+
+		.hero-img {
+			display: grid;
+			grid-column: span 4;
+			margin-bottom: 1em;
+		}
+
+		.hero-img >* {
+			grid-column: 1;
+			grid-row: 1;
+		}
+
+		.hero-img h2, .hero-img h3{
+			background: #fff;
+			padding:1em 1.75em;
+			font-size: 1.5em;
+			font-weight:300;
+		}
+
+		.hero-img h2 span,.hero-img h3 span {
+			font-size: .65em;
+			color: #9a2018;
+		}
+
+		.hero-img h2.left, .hero-img h3.left {
+			align-self:flex-end;
+			justify-self:start;
+		}
+
+		.hero-img h2.right, .hero-img h3.right {
+			align-self:flex-end;
+			justify-self: end;
+		}
+
+
+
+
+   }
